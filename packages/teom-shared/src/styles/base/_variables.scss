@@ -1,0 +1,20 @@
+// Spacing affects every adaptive size in the design system.
+// For example, width: get-size(10) generates a width based on $spacing. 
+$spacing: .25rem;
+
+// Rounding defines border-radius levels throughout the design system.
+$rounding: (
+  full: 100rem, // Used in switches.
+  base: 4 * $spacing, // Used in cards.
+  content: 2 * $spacing, // Used in buttons, inputs, checkboxes, etc.
+  internal: $spacing, // Used inside of the buttons, inputs, etc.
+);
+
+// Font-sizes used throughout the design system.
+$font-size: (
+  huge: 2rem, // Reserved.
+  large: 1.25rem, // Headings.
+  base: 1rem, // Simple text.
+  small: 0.875rem, // Labels.
+  tiny: 0.75rem, // Reserved.
+);

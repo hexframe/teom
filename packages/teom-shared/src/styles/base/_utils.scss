@@ -1,0 +1,61 @@
+@use "sass:list";
+@use "sass:map";
+@use "variables";
+
+// Generates the adaptive sizes (rem).
+@function get-size($value) {
+  @return $value * variables.$spacing;
+}
+
+// Implements color picking based on the current theme.
+@function get-color($color, $type: "background") {
+  $available: ("content", "hover", "focus", "text");
+  @if list.index($available, $type) {
+    @return var(--color-#{$color}-#{$type});
+  }
+  @else {
+    @return var(--color-#{$color});
+  }
+}
+
+// Returns value from variables.$rounding by name.
+// TODO: Replace the following function with the custom classes.
+@function get-radius($name) {
+  @if map.has-key(variables.$rounding, $name) {
+    @return map.get(variables.$rounding, $name);
+  }
+  @return 0;
+}
+
+// Returns value from variables.$font-size by name. 
+@function get-font-size($name) {
+  @if map.has-key(variables.$font-size, $name) {
+    @return map.get(variables.$font-size, $name);
+  }
+  @return 0;
+}
+
+// Apply GPU-accelerated visual effects.
+@mixin use-scale($values...) {
+  transform: scale3d(
+    list.nth($values, 1),
+    list.nth($values, -1),
+    1
+  );
+}
+@mixin use-translate($values...) {
+  transform: translate3d(
+    list.nth($values, 1),
+    list.nth($values, -1),
+    0
+  );
+}
+@mixin use-focus($type: "provider") {
+  @if $type == "provider" {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+  @else {
+    outline-color: get-color($type, "focus");
+  }
+}

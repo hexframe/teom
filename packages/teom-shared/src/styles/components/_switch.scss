@@ -1,0 +1,59 @@
+@use "../base/utils" as *;
+
+$box-height: 6;
+$box-width: 12;
+$dot-size: 4;
+$box-padding: calc(($box-height - $dot-size) / 2);
+$dot-shift: calc($box-width - $box-height);
+
+// Switch Base Class
+.sch {
+  appearance: none;
+  height: get-size($box-height);
+  width: get-size($box-width);
+  padding: get-size($box-padding);
+  border-radius: get-radius("full");
+  background-color: get-color("secondary");
+  transition:
+    background-color .2s ease,
+    outline-color .2s ease;
+  cursor: pointer;
+  @include use-focus("provider");
+  &::after {
+    content: "";
+    height: get-size($dot-size);
+    width: get-size($dot-size);
+    position: absolute;
+    border-radius: get-radius("full");
+    background-color: get-color("secondary", "content");
+    transition: .2s ease;
+  }
+  &:hover {
+    &:enabled {
+      background-color: get-color("secondary", "hover");
+      &:checked {
+        background-color: get-color("primary", "hover");
+      }
+    }
+  }
+  &:checked {
+    background-color: get-color("primary");
+    &::after {
+      background-color: get-color("primary", "content");
+      @include use-translate(get-size($dot-shift), 0);
+    }
+  }
+  &:disabled {
+    background-color: get-color("disabled");
+    cursor: not-allowed;
+    &::after {
+      background-color: get-color("disabled", "content");
+    }
+  }
+  &:focus-visible {
+    @include use-focus("secondary");
+  }
+  &:invalid {
+    @include use-focus("danger");
+  }
+}

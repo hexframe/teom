@@ -1,0 +1,58 @@
+@use "../base/utils" as *;
+
+// Checkbox Global Variables
+$box-size: 6;
+$dot-size: 3.5;
+
+// Checkbox Base Class
+.chx {
+  appearance: none;
+  height: get-size($box-size);
+  width: get-size($box-size);
+  display: grid;
+  place-content: center;
+  border-radius: get-radius("content");
+  background-color: get-color("secondary");
+  transition:
+    background-color .2s ease,
+    outline-color .2s ease;
+  cursor: pointer;
+  @include use-focus("provider");
+  &::after {
+    content: "";
+    height: get-size($dot-size);
+    width: get-size($dot-size);
+    border-radius: get-radius("internal");
+    background-color: get-color("secondary", "content");
+    opacity: 0;
+    transition: .1s ease;
+    @include use-scale(.8);
+  }
+  &:indeterminate {
+    height: get-size(.5);
+  }
+  &:checked {
+    &::after {
+      opacity: 1;
+      @include use-scale(1);
+    }
+  }
+  &:disabled {
+    background-color: get-color("disabled");
+    cursor: not-allowed;
+    &::after {
+      background-color: get-color("disabled", "content");
+    }
+  }
+  &:enabled {
+    &:hover {
+      background-color: get-color("secondary", "hover");
+    }
+  }
+  &:focus-visible {
+    @include use-focus("secondary");
+  }
+  &:invalid {
+    @include use-focus("danger");
+  }
+}

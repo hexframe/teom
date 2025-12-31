@@ -1,0 +1,6 @@
+@use "utils" as *;
+
+:root {
+  color: get-color("primary");
+  background-color: get-color("background");
+}

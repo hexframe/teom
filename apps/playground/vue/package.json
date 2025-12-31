@@ -1,0 +1,30 @@
+{
+  "name": "@repo/playground-vue",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc -p tsconfig.json --noEmit && vite build",
+    "preview": "vite preview",
+    "lint:code": "eslint .",
+    "lint:code:fix": "eslint . --fix"
+  },
+  "devDependencies": {
+    "@fontsource-variable/geist": "^5.2.8",
+    "@hexframe/teom-shared": "workspace:*",
+    "@hexframe/teom-vue": "workspace:*",
+    "@iconify-json/tabler": "^1.2.23",
+    "@repo/configs": "workspace:*",
+    "@tailwindcss/vite": "^4.1.18",
+    "@vueuse/core": "^13.6.0",
+    "eslint": "catalog:",
+    "tailwindcss": "^4.1.18",
+    "typescript": "catalog:",
+    "unplugin-icons": "^22.2.0",
+    "unplugin-vue": "catalog:",
+    "vite": "catalog:",
+    "vue": "catalog:",
+    "vue-tsc": "catalog:"
+  }
+}

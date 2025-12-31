@@ -1,0 +1,30 @@
+# Logs
+logs
+*.log
+pnpm-debug.log*
+
+# Build System & Dependencies
+.cache
+.data
+.output
+.turbo
+.tmp
+node_modules
+dist
+*.local
+*.tsbuildinfo
+
+# Editors & Platforms
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Nuxt (Docs)
+.nuxt
+.nitro

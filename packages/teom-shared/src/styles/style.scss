@@ -1,0 +1,16 @@
+// BASE. Base styles, such as theme and CSS variables.
+@use "base/theme";
+
+// COMPONENTS. Component-specific styles.
+// These should be component-specific classes.
+@use "components/button";
+@use "components/card";
+@use "components/checkbox";
+@use "components/input";
+@use "components/label";
+@use "components/number";
+@use "components/progress";
+@use "components/radio";
+@use "components/select";
+@use "components/slider";
+@use "components/switch";

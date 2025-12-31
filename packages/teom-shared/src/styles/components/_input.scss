@@ -1,0 +1,50 @@
+@use "../base/utils" as *;
+
+.ipt {
+  height: get-size(10);
+  width: 100%;
+  padding: 0 get-size(3);
+  border-radius: get-radius("content");
+  color: get-color("secondary", "content");
+  background-color: get-color("secondary");
+  transition:
+    background-color .2s ease,
+    outline-color .2s ease;
+  @include use-focus("provider");
+  &:disabled {
+    color: get-color("disabled", "content");
+    background-color: get-color("disabled");
+    cursor: not-allowed;
+  }
+  &:enabled {
+    &:hover {
+      background-color: get-color("secondary", "hover");
+    }
+  }
+  &:focus-visible {
+    @include use-focus("secondary");
+  }
+  &:invalid {
+    @include use-focus("danger");
+  }
+}
+.ipt[type=file] {
+  padding-left: 0;
+  &::file-selector-button {
+    height: get-size(10);
+    padding: 0 get-size(3);
+    border-radius: get-radius("content");
+    color: get-color("primary", "content");
+    background-color: get-color("primary");
+    transition:
+      background-color .2s ease,
+      padding .2s ease;
+    cursor: pointer;
+    &:hover {
+      background-color: get-color("primary", "hover");
+    }
+    &:active {
+      padding-right: get-size(6);
+    }
+  }
+}
