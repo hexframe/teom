@@ -7,7 +7,6 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
   plugins: [
-    // @ts-expect-error due to Plugin<any> in vite-plugin-dts
     pluginDts(),
   ],
   build: {
